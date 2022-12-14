@@ -25,3 +25,17 @@ gameBoard.addEventListener('click', (event) => {
     }, 300);
   }
 });
+
+
+const createRoomBtn = document.querySelector(".create-room-btn");
+
+function updateHandler(data) {
+  console.log(data);
+}
+
+
+function createRoom() {
+  game.create(updateHandler)
+}
+
+createRoomBtn.addEventListener('click', createRoom);

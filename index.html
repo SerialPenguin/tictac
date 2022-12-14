@@ -6,14 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
+      integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="socket.js"></script>
     <script src="index.js" defer></script>
     <style>
       body {
-        background-color: red;
+        background-color: #c9c9c9;
       }
     </style>
   </head>
   <body>
+    <div>
+      <button class="create-room-btn">Skapa spelrum</button>
+      <p class="room-id-txt">Inget rum skapat</p>
+    </div>
     <div class="gameboard">
       <div class="card"></div>
       <div class="card"></div>
