@@ -33,6 +33,56 @@ describe("Victory with row", function () {
   });
 });
 
+describe("Victory with column", function () {
+  it("First col", function () {
+    let board = getEmptyBoard();
+    board[0] = TEST_SYMBOL;
+    board[3] = TEST_SYMBOL;
+    board[6] = TEST_SYMBOL;
+
+    expect(checkForWinner(board)).toBe(TEST_SYMBOL);
+  });
+
+  it("Second col", function () {
+    let board = getEmptyBoard();
+    board[1] = TEST_SYMBOL;
+    board[4] = TEST_SYMBOL;
+    board[7] = TEST_SYMBOL;
+
+    expect(checkForWinner(board)).toBe(TEST_SYMBOL);
+  });
+
+  it("Third col", function () {
+    let board = getEmptyBoard();
+    board[2] = TEST_SYMBOL;
+    board[5] = TEST_SYMBOL;
+    board[8] = TEST_SYMBOL;
+
+    expect(checkForWinner(board)).toBe(TEST_SYMBOL);
+  });
+});
+
+describe("Victory with diagonal", function () {
+  it("Right diagonal", function () {
+    let board = getEmptyBoard();
+    board[0] = TEST_SYMBOL;
+    board[4] = TEST_SYMBOL;
+    board[8] = TEST_SYMBOL;
+
+    expect(checkForWinner(board)).toBe(TEST_SYMBOL);
+  });
+
+  it("Left diagonal", function () {
+    let board = getEmptyBoard();
+    board[2] = TEST_SYMBOL;
+    board[4] = TEST_SYMBOL;
+    board[6] = TEST_SYMBOL;
+
+    expect(checkForWinner(board)).toBe(TEST_SYMBOL);
+  });
+
+});
+
 describe("No winner", function () {
 
   it("Test game draw", function () {
