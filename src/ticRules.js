@@ -8,4 +8,18 @@ function checkForWinner(board) {
   if (board[3] != " " && board[3] == board[4] && board[3] == board[5]) {
     return board[3];
   }
+
+  if (board[6] != " " && board[6] == board[7] && board[6] == board[8]) {
+    return board[6];
+  }
+
+  /* kolla kolumner */
+
+  /* kolla diagonaler */
+
+  if (!board.includes(" ")) {
+    return "draw";
+  }
+
+  return false;
 }
