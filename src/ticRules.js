@@ -1,44 +1,83 @@
 /* Vinna med en rad, vinna med kolumn, vinna med diagonal */
+function checkRows(board, index, dim) {
+  let col = 1;
+  let symbol = board[index * dim];
+  while (symbol == board[col + (index * dim)] && col < dim) {
+    col++;
+  }
+  return dim == col ? symbol : " ";
+}
+
+function checkCols(board, index, dim) {
+  let row = 1;
+  let symbol = board[index];
+  while (symbol == board[index + (row * dim)] && row < dim) {
+    row++;
+  }
+  return dim == row ? symbol : " ";
+}
+
+function checkLeftDiagonal(board, dim) {
+  let row = 1;
+  let symbol = board[0];
+  while (symbol == board[row * (dim + 1)] && row < dim) {
+    row++;
+  }
+
+  return dim == row ? symbol : " ";
+}
+
+
+
+function checkRightDiagonal(board, dim) {
+  let row = 1;
+  let symbol = board[dim - 1];
+  while (symbol == board[row * (dim - 1)] && row < dim) {
+    row++;
+  }
+
+  return dim == row ? symbol : " ";
+}
+
+function checkCondition(condition, startIndex, dim, board) {
+  let index = 0;
+  let symbol = board[startIndex];
+  while (condition(symbol, index)) {
+    index++;
+  }
+  return index == dim ? symbol : " ";
+}
 
 function checkForWinner(board) {
-  if (board[0] != " " && board[0] == board[1] && board[0] == board[2]) {
-    return board[0];
+  let dim = Math.sqrt(board.length) //varje plan är n * n lång
+  let winSymbol = " ";
+  let index = 0;
+
+  while (winSymbol === " " && index < dim) {
+    winSymbol = checkRows(board, index, dim);
+
+    if (winSymbol == " ") {
+      winSymbol = checkCols(board, index, dim);
+    }
+
+    index++;
   }
 
-  if (board[3] != " " && board[3] == board[4] && board[3] == board[5]) {
-    return board[3];
+  if (winSymbol == " ") {
+    winSymbol = checkLeftDiagonal(board, dim);
   }
 
-  if (board[6] != " " && board[6] == board[7] && board[6] == board[8]) {
-    return board[6];
-  }
-
-  /* kolla kolumner */
-
-  if (board[0] != " " && board[0] == board[3] && board[0] == board[6]) {
-    return board[0];
-  }
-
-  if (board[1] != " " && board[1] == board[4] && board[1] == board[7]) {
-    return board[1];
-  }
-
-  if (board[2] != " " && board[2] == board[5] && board[2] == board[8]) {
-    return board[2];
-  }
-
-  /* kolla diagonaler */
-  if (board[0] != " " && board[0] == board[4] && board[0] == board[8]) {
-    return board[0];
-  }
-
-  if (board[2] != " " && board[2] == board[4] && board[2] == board[6]) {
-    return board[2];
+  if (winSymbol == " ") {
+    winSymbol = checkRightDiagonal(board, dim);
   }
 
   if (!board.includes(" ")) {
-    return "draw";
+    winSymbol = "draw";
   }
 
-  return false;
+  if (winSymbol == " ") {
+    return false;
+  }
+
+  return winSymbol;
 }

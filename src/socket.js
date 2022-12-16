@@ -6,7 +6,7 @@ function GameWebInterface(addr) {
 }
 
 GameWebInterface.prototype.create = function (updateHandler) {
-  const initBoard = ["", "", "", "", "", "", "", "", ""];
+  const initBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
   const fetchOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

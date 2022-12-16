@@ -65,6 +65,11 @@ function updateHandler(data) {
   idValue = data.id;
 
   renderFromList(data.board);
+
+  let symbol = checkForWinner(data.board);
+  if (symbol) {
+    roomIdTxt.innerText = symbol + " won the game";
+  }
 }
 
 function createRoom() {
